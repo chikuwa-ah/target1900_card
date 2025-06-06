@@ -73,3 +73,34 @@ a.button-link:active {
         min-width: 100%;
     }
 }
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    font-family: sans-serif;
+}
+
+.row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 0;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #e0f7fa;
+}
+
+.cell {
+    flex: 1;
+    padding: 0 12px;
+    text-align: center;
+}
+
+.cell.number {
+    flex: 1;
+}
+
+.cell.word {
+    flex: 2;
+}

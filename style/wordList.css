@@ -38,3 +38,7 @@ select#section-select:focus {
         max-width: 300px;
     }
 }
+
+body {
+    font-family: sans-serif;
+}

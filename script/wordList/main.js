@@ -1,14 +1,18 @@
 const createTable = (data) => {
     const container = document.getElementById('wordList');
 
-    container.innerHTML = `                <div class="row header">
-                    <div class="cell number">Number</div>
-                    <div class="cell word">Word</div>
-                </div>`;
+    container.innerHTML = `
+        <div class="row header">
+            <div class="cell number">No.</div>
+            <div class="cell word">単語</div>
+        </div>`;
 
     for (const word of data) {
         const row = document.createElement('div');
         row.className = 'row';
+        if (JSON.parse(localStorage.getItem(`${word.number}`))) {
+            row.style.backgroundColor = '#fcc';
+        }
 
         const numberCell = document.createElement('div');
         numberCell.className = 'cell number';
@@ -36,6 +40,65 @@ const loadWords = (section) => {
     createTable(sectionWords)
 }
 
+const showPopUp = (number) => {
+    const wordBox = document.getElementById('pop-word');
+    const meanBox = document.getElementById('pop-mean');
+    wordBox.textContent = WORDS[number].word;
+    meanBox.textContent = WORDS[number].mean;
+    document.querySelector('.pop-overlay').style.display = 'block';
+    document.querySelector('.pop-up').style.display = 'block';
+}
+
+const closePopUp = () => {
+    document.querySelector('.pop-overlay').style.display = 'none';
+    document.querySelector('.pop-up').style.display = 'none';
+}
+
+
+const touchEventListener = () => {
+    let startY = 0;
+    let moved = false;
+    const threshold = 10;
+
+    const container = document.getElementById('wordList');
+
+    container.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
+        moved = false;
+    });
+
+    container.addEventListener('touchmove', (e) => {
+        const currentY = e.touches[0].clientY;
+        if (Math.abs(currentY - startY) > threshold) {
+            moved = true;
+        }
+    });
+
+    container.addEventListener('touchend', (e) => {
+        if (moved) return;
+        e.preventDefault();
+
+        const target = e.target;
+        const parent = target.parentNode;
+        const style = getComputedStyle(parent);
+
+        if (target.classList[1] === 'word' && target.textContent !== '単語') {
+            const number = Number(parent.children[0].textContent);
+            showPopUp(number);
+        }
+
+        if (target.classList[1] === 'number' && target.textContent !== 'No.') {
+            const number = Number(target.textContent);
+            if (style.backgroundColor === 'rgb(255, 255, 255)') {
+                parent.style.backgroundColor = '#fcc';
+                localStorage.setItem(`${number}`, true);
+            } else {
+                parent.style.backgroundColor = '#fff';
+                localStorage.setItem(`${number}`, false);
+            }
+        }
+    });
+}
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -48,6 +111,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const selector = document.getElementById('section-select');
     selector.addEventListener('change', () => {
-        loadWords(selector.value);
+        if (selector.value !== '0') {
+            loadWords(selector.value);
+        }
     })
+
+    touchEventListener();
 })

@@ -11,7 +11,7 @@ header {
 
 header h1 {
     font-size: 3.0rem;
-    color: #3b82f6;
+    color: #75cad5;
     font-weight: 700;
     letter-spacing: 0.05em;
 }
@@ -39,11 +39,11 @@ div.links {
 
 a.button-link {
     text-decoration: none;
-    background-color: #3b82f6;
+    background-color: #75cad5;
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgb(59 130 246 / 0.3);
+    box-shadow: 0 4px 8px rgb(172, 245, 255, 0.4);
     font-weight: 600;
     font-size: 1.6rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -53,14 +53,14 @@ a.button-link {
 }
 
 a.button-link:hover {
-    background-color: #2563eb;
+    background-color: #acf5ff;
     transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgb(37 99 235 / 0.4);
+    box-shadow: 0 8px 15px rgb(172, 245, 255, 0.4);
 }
 
 a.button-link:active {
     transform: translateY(0);
-    box-shadow: 0 4px 8px rgb(37 99 235 / 0.3);
+    box-shadow: 0 4px 8px rgb(172, 245, 255, 0.3);
 }
 
 @media (max-width: 480px) {
@@ -75,15 +75,18 @@ a.button-link:active {
 }
 
 .container {
-    width: 80%;
+    width: 85%;
     margin: 20px auto;
     font-family: sans-serif;
 }
 
 .row {
     display: flex;
+    background-color: #fff;
     border-bottom: 1px solid #ccc;
     padding: 8px 0;
+    align-items: center;
+    height: 3em;
 }
 
 .header {
@@ -98,9 +101,48 @@ a.button-link:active {
 }
 
 .cell.number {
-    flex: 1;
+    flex: 2;
+    border-right: 1px solid #ccc;
 }
 
 .cell.word {
-    flex: 2;
+    flex: 5;
+    font-size: 1.2em;
+}
+
+
+.pop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    z-index: 999;
+}
+
+/* モーダル本体 */
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 300px;
+    display: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#pop-word {
+    font-size: 1.9em;
+    margin-bottom: 12px;
+}
+
+#pop-mean {
+    font-size: 1.1em;
 }

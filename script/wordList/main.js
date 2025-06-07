@@ -11,7 +11,7 @@ const createTable = (data) => {
         const row = document.createElement('div');
         row.className = 'row';
         if (JSON.parse(localStorage.getItem(`${word.number}`))) {
-            row.style.backgroundColor = '#ffd';
+            row.style.backgroundColor = '#b3f5ff';
         }
 
         const numberCell = document.createElement('div');
@@ -90,10 +90,11 @@ const touchEventListener = () => {
         if (target.classList[1] === 'number' && target.textContent !== 'No.') {
             const number = Number(target.textContent);
             if (style.backgroundColor === 'rgb(255, 255, 255)') {
-                parent.style.backgroundColor = '#ffd';
+                parent.style.backgroundColor = '#b3f5ff';
                 localStorage.setItem(`${number}`, true);
             } else {
                 parent.style.backgroundColor = '#fff';
+
                 localStorage.setItem(`${number}`, false);
             }
         }

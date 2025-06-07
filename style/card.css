@@ -1,6 +1,5 @@
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    background-color: #f9f9f9;
     color: #333;
     padding: 0;
     margin: 0;
@@ -30,20 +29,14 @@ body {
     max-width: 320px;
 }
 
-.setup-container input[type="number"],
-.setup-container select {
-    width: 100%;
+.setup-container input[type="number"] {
+    width: 80px;
     padding: 0.6rem;
-    margin-top: 0.3rem;
     font-size: 1rem;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #75cad5;
 }
 
-.setup-container input[type="checkbox"] {
-    transform: scale(1.3);
-    margin-right: 0.6rem;
-}
 
 .setup-container button {
     margin-top: 1.5rem;
@@ -80,7 +73,7 @@ body {
 
 .button-group {
     display: flex;
-    border: 1px solid #acf5ff;
+    border: 1px solid #75cad5;
     border-radius: 6px;
     overflow: hidden;
 }
@@ -91,7 +84,7 @@ body {
     text-align: center;
     cursor: pointer;
     background-color: white;
-    border-right: 1px solid #acf5ff;
+    border-right: 1px solid #75cad5;
     transition: background-color 0.3s ease;
     user-select: none;
 }
@@ -114,7 +107,6 @@ body {
     padding: 1rem;
     height: calc(100vh - 80px);
     font-family: 'Noto Sans JP', sans-serif;
-    background-color: #f9f9f9;
     position: relative;
 }
 
@@ -135,7 +127,7 @@ body {
     width: 80vw;
     height: 50vh;
     max-width: 320px;
-    max-height: 400px;
+    max-height: 320px;
     border-radius: 16px;
     box-shadow: 0 8px 15px rgba(172, 245, 255, 0.4);
     display: flex;
@@ -150,52 +142,31 @@ body {
     margin-top: 3rem;
 }
 
-.card.flipped {
-    background-color: #acf5ff;
-    color: #333;
-    transform: rotateY(180deg);
+.card-text p {
+    margin-top: 1em;
+    font-size: 0.7em;
 }
 
-.controls {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
-}
-
-.controls button {
-    flex: 1;
-    padding: 1rem;
-    background-color: #75cad5;
+.show-weak {
+    margin-top: 5rem;
+    padding: 1rem 2rem;
+    text-align: center;
     border: none;
     border-radius: 12px;
-    color: white;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    max-width: 150px;
+    width: 80%;
+    max-width: 300px;
 }
 
-.controls button:hover {
-    background-color: #acf5ff;
-    transform: translateY(-3px);
-}
-
-.progress {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.4rem;
-}
-
-.progress-dot {
-    width: 12px;
-    height: 12px;
-    background-color: #ccc;
-    border-radius: 50%;
-}
-
-.progress-dot.active {
+.weak-true {
     background-color: #75cad5;
+    color: white;
+}
+
+.weak-false {
+    background-color: #fff;
+    color: #75cad5;
+    border: #75cad5 solid 1px;
 }

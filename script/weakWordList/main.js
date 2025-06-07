@@ -28,16 +28,15 @@ const createTable = (data) => {
     }
 }
 
-const loadWords = (section) => {
-    const first = (section - 1) * 100 + 1;
-    const end = section * 100;
-    const sectionWords = [];
-    for (let i = first; i <= end; i++) {
-        const entry = WORDS[i];
-        sectionWords.push(entry);
+const loadWords = () => {
+    const weakWords = [];
+    for (let index = 1; index < 1901; index++) {
+        if (JSON.parse(localStorage.getItem(`${index}`))) {
+            weakWords.push(WORDS[index]);
+        }
     }
 
-    createTable(sectionWords);
+    createTable(weakWords);
 }
 
 const showPopUp = (number) => {
@@ -53,7 +52,6 @@ const closePopUp = () => {
     document.querySelector('.pop-overlay').style.display = 'none';
     document.querySelector('.pop-up').style.display = 'none';
 }
-
 
 const touchEventListener = () => {
     let startY = 0;
@@ -108,13 +106,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         console.log('new');
     }
-
-    const selector = document.getElementById('section-select');
-    selector.addEventListener('change', () => {
-        if (selector.value !== '0') {
-            loadWords(selector.value);
-        }
-    })
-
+    loadWords();
     touchEventListener();
 })

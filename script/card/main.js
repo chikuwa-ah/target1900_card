@@ -3,7 +3,11 @@ const card = (settings) => {
     if (!firstArray.length) location.reload();
     const secondArray = settings.order === 0 ? firstArray : arrayShuffle(firstArray);
 
-
+    if (settings.direction === 0) {
+        enToJa(secondArray);
+    } else {
+        jaToEn(secondArray);
+    }
 }
 
 const arrayShuffle = (array) => {
@@ -30,6 +34,118 @@ const createWeakWordArray = (settings) => {
         }
     }
     return array;
+}
+
+const enToJa = (wordList) => {
+    let index = 0;
+    let mean = false;
+
+    const card = document.getElementById('card');
+    const wordSpace = document.getElementById('wordText');
+    const meanSpace = document.getElementById('meanText');
+    const showWeak = document.getElementById('isWeak');
+    wordSpace.textContent = wordList[0].word;
+    if (JSON.parse(localStorage.getItem(`${wordList[0].number}`))) {
+        showWeak.classList.remove('weak-false');
+        showWeak.classList.add('weak-true');
+    } else {
+        showWeak.classList.remove('weak-true');
+        showWeak.classList.add('weak-false');
+    }
+
+    card.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        if (mean) {
+            index++;
+            if (index >= wordList.length) {
+                location.reload();
+            }
+            mean = false;
+            wordSpace.textContent = wordList[index].word;
+            meanSpace.textContent = '';
+            if (JSON.parse(localStorage.getItem(`${wordList[index].number}`))) {
+                showWeak.classList.remove('weak-false');
+                showWeak.classList.add('weak-true');
+            } else {
+                showWeak.classList.remove('weak-true');
+                showWeak.classList.add('weak-false');
+            }
+        } else {
+            mean = true;
+            meanSpace.textContent = wordList[index].mean;
+        }
+    })
+
+    showWeak.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        if (showWeak.classList.contains('weak-false')) {
+            showWeak.classList.remove('weak-false');
+            showWeak.classList.add('weak-true');
+            localStorage.setItem(`${wordList[index].number}`, true);
+        } else {
+            localStorage.setItem(`${wordList[index].number}`, false);
+            showWeak.classList.remove('weak-true');
+            showWeak.classList.add('weak-false');
+        }
+    })
+}
+
+const jaToEn = (wordList) => {
+    let index = 0;
+    let word = false;
+
+    const card = document.getElementById('card');
+    const wordSpace = document.getElementById('wordText');
+    const meanSpace = document.getElementById('meanText');
+    const showWeak = document.getElementById('isWeak');
+    meanSpace.textContent = wordList[0].mean;
+    if (JSON.parse(localStorage.getItem(`${wordList[0].number}`))) {
+        showWeak.classList.remove('weak-false');
+        showWeak.classList.add('weak-true');
+    } else {
+        showWeak.classList.remove('weak-true');
+        showWeak.classList.add('weak-false');
+    }
+
+    card.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        if (word) {
+            index++;
+            if (index >= wordList.length) {
+                location.reload();
+            }
+            word = false;
+            meanSpace.textContent = wordList[index].mean;
+            wordSpace.textContent = '';
+            if (JSON.parse(localStorage.getItem(`${wordList[index].number}`))) {
+                showWeak.classList.remove('weak-false');
+                showWeak.classList.add('weak-true');
+            } else {
+                showWeak.classList.remove('weak-true');
+                showWeak.classList.add('weak-false');
+            }
+        } else {
+            word = true;
+            wordSpace.textContent = wordList[index].word;
+        }
+    })
+
+    showWeak.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        if (showWeak.classList.contains('weak-false')) {
+            showWeak.classList.remove('weak-false');
+            showWeak.classList.add('weak-true');
+            localStorage.setItem(`${wordList[index].number}`, true);
+        } else {
+            localStorage.setItem(`${wordList[index].number}`, false);
+            showWeak.classList.remove('weak-true');
+            showWeak.classList.add('weak-false');
+        }
+    })
 }
 
 

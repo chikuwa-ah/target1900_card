@@ -157,6 +157,7 @@ select#range-select:focus {
 }
 
 .show-number {
+    margin-top: 3rem;
     color: #75cad5;
     font-size: 1.2em;
     font-weight: 600;
@@ -193,7 +194,7 @@ select#range-select:focus {
 }
 
 .show-weak {
-    margin-top: 5rem;
+    margin-top: 3rem;
     padding: 1rem 2rem;
     text-align: center;
     border: none;
@@ -216,6 +217,7 @@ select#range-select:focus {
     color: #75cad5;
 }
 
+
 .card-end {
     display: none;
     flex-direction: column;
@@ -231,7 +233,7 @@ select#range-select:focus {
     background-color: #75cad5;
     color: white;
     width: 80vw;
-    height: 15vh;
+    height: 40vh;
     max-width: 320px;
     max-height: 1500px;
     border-radius: 16px;

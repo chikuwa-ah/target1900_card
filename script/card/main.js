@@ -64,7 +64,7 @@ const enToJa = (wordList, settings) => {
         if (mean) {
             index++;
             if (index >= wordList.length) {
-                cardEnd(settings);
+                cardEnd();
                 return;
             }
             showNumber.textContent = `${index + 1} / ${wordList.length}`;
@@ -124,7 +124,7 @@ const jaToEn = (wordList, settings) => {
         if (word) {
             index++;
             if (index >= wordList.length) {
-                cardEnd(settings);
+                cardEnd();
                 return;
             }
             showNumber.textContent = `${index + 1} / ${wordList.length}`;
@@ -160,11 +160,15 @@ const jaToEn = (wordList, settings) => {
 }
 
 
-const cardEnd = (settings) => {
+const cardEnd = () => {
     const cardContainer = document.getElementById('cardSection');
     cardContainer.style.display = 'none';
     const cardEnd = document.getElementById('cardEnd');
     cardEnd.style.display = 'flex';
+
+    document.getElementById('cardEnd').addEventListener('click', () => {
+        location.reload();
+    }, { once: true })
 }
 
 

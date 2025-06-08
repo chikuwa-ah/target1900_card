@@ -37,6 +37,41 @@ body {
     border: 1px solid #75cad5;
 }
 
+select#range-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-color: white;
+    border: 1px solid #75cad5;
+    border-radius: 8px;
+    padding: 0.75rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    width: 193px;
+    background-image: url("data:image/svg+xml,%3csvg fill='%233b82f6' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select#range-select:hover,
+select#range-select:focus {
+    border-color: #59afbb;
+    outline: none;
+}
+
+
+.select-container {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    max-width: 320px;
+}
+
 
 .setup-container button {
     margin-top: 1.5rem;

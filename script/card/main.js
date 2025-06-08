@@ -150,6 +150,29 @@ const jaToEn = (wordList) => {
 
 
 window.addEventListener('DOMContentLoaded', () => {
+    const selector = document.getElementById('range-select');
+    selector.addEventListener('change', () => {
+        const start = document.getElementById('startIndex');
+        const end = document.getElementById('endIndex');
+        const section = selector.value;
+        if (section !== '0') {
+            start.value = (section - 1) * 100 + 1;
+            end.value = section * 100;
+        } else {
+            start.value = 1;
+            end.value = 1900;
+        }
+    })
+
+    const startIndex = document.getElementById('startIndex');
+    startIndex.addEventListener('focus', function () {
+        this.select();
+    });
+    const endIndex = document.getElementById('endIndex');
+    endIndex.addEventListener('focus', function () {
+        this.select();
+    });
+
     document.querySelectorAll('.button-group').forEach(group => {
         group.addEventListener('touchend', (e) => {
             if (e.target.classList.contains('button-item')) {
@@ -185,5 +208,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('backBtn').addEventListener('click', () => {
         location.reload();
-    })
+    });
 })

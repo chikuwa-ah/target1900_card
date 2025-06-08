@@ -1,12 +1,15 @@
 const card = (settings) => {
+    const cardContainer = document.getElementById('cardSection');
+    cardContainer.style.display = 'flex';
+
     const firstArray = settings.weakOnly === 0 ? createAllWordArray(settings) : createWeakWordArray(settings);
     if (!firstArray.length) location.reload();
     const secondArray = settings.order === 0 ? firstArray : arrayShuffle(firstArray);
 
     if (settings.direction === 0) {
-        enToJa(secondArray);
+        enToJa(secondArray, settings);
     } else {
-        jaToEn(secondArray);
+        jaToEn(secondArray, settings);
     }
 }
 
@@ -36,7 +39,7 @@ const createWeakWordArray = (settings) => {
     return array;
 }
 
-const enToJa = (wordList) => {
+const enToJa = (wordList, settings) => {
     let index = 0;
     let mean = false;
 
@@ -44,6 +47,7 @@ const enToJa = (wordList) => {
     const wordSpace = document.getElementById('wordText');
     const meanSpace = document.getElementById('meanText');
     const showWeak = document.getElementById('isWeak');
+    const showNumber = document.getElementById('showNumber');
     wordSpace.textContent = wordList[0].word;
     if (JSON.parse(localStorage.getItem(`${wordList[0].number}`))) {
         showWeak.classList.remove('weak-false');
@@ -52,6 +56,7 @@ const enToJa = (wordList) => {
         showWeak.classList.remove('weak-true');
         showWeak.classList.add('weak-false');
     }
+    showNumber.textContent = `${index + 1} / ${wordList.length}`;
 
     card.addEventListener('touchend', (e) => {
         e.preventDefault();
@@ -59,8 +64,10 @@ const enToJa = (wordList) => {
         if (mean) {
             index++;
             if (index >= wordList.length) {
-                location.reload();
+                cardEnd(settings);
+                return;
             }
+            showNumber.textContent = `${index + 1} / ${wordList.length}`;
             mean = false;
             wordSpace.textContent = wordList[index].word;
             meanSpace.textContent = '';
@@ -92,7 +99,7 @@ const enToJa = (wordList) => {
     })
 }
 
-const jaToEn = (wordList) => {
+const jaToEn = (wordList, settings) => {
     let index = 0;
     let word = false;
 
@@ -100,6 +107,7 @@ const jaToEn = (wordList) => {
     const wordSpace = document.getElementById('wordText');
     const meanSpace = document.getElementById('meanText');
     const showWeak = document.getElementById('isWeak');
+    const showNumber = document.getElementById('showNumber');
     meanSpace.textContent = wordList[0].mean;
     if (JSON.parse(localStorage.getItem(`${wordList[0].number}`))) {
         showWeak.classList.remove('weak-false');
@@ -108,6 +116,7 @@ const jaToEn = (wordList) => {
         showWeak.classList.remove('weak-true');
         showWeak.classList.add('weak-false');
     }
+    showNumber.textContent = `${index + 1} / ${wordList.length}`;
 
     card.addEventListener('touchend', (e) => {
         e.preventDefault();
@@ -115,8 +124,10 @@ const jaToEn = (wordList) => {
         if (word) {
             index++;
             if (index >= wordList.length) {
-                location.reload();
+                cardEnd(settings);
+                return;
             }
+            showNumber.textContent = `${index + 1} / ${wordList.length}`;
             word = false;
             meanSpace.textContent = wordList[index].mean;
             wordSpace.textContent = '';
@@ -146,6 +157,14 @@ const jaToEn = (wordList) => {
             showWeak.classList.add('weak-false');
         }
     })
+}
+
+
+const cardEnd = (settings) => {
+    const cardContainer = document.getElementById('cardSection');
+    cardContainer.style.display = 'none';
+    const cardEnd = document.getElementById('cardEnd');
+    cardEnd.style.display = 'flex';
 }
 
 
@@ -193,9 +212,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         const settings = document.querySelector('.origin');
         settings.style.display = 'none';
-
-        const cardContainer = document.getElementById('cardSection');
-        cardContainer.style.display = 'flex';
 
         card({
             start: start,

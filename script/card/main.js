@@ -7,9 +7,9 @@ const card = (settings) => {
     const secondArray = settings.order === 0 ? firstArray : arrayShuffle(firstArray);
 
     if (settings.direction === 0) {
-        enToJa(secondArray, settings);
+        enToJa(secondArray);
     } else {
-        jaToEn(secondArray, settings);
+        jaToEn(secondArray);
     }
 }
 
@@ -39,13 +39,14 @@ const createWeakWordArray = (settings) => {
     return array;
 }
 
-const enToJa = (wordList, settings) => {
+const enToJa = (wordList) => {
     let index = 0;
     let mean = false;
 
     const card = document.getElementById('card');
     const wordSpace = document.getElementById('wordText');
     const meanSpace = document.getElementById('meanText');
+    const numberSpace = document.getElementById('numberText');
     const showWeak = document.getElementById('isWeak');
     const showNumber = document.getElementById('showNumber');
     wordSpace.textContent = wordList[0].word;
@@ -57,6 +58,7 @@ const enToJa = (wordList, settings) => {
         showWeak.classList.add('weak-false');
     }
     showNumber.textContent = `${index + 1} / ${wordList.length}`;
+    numberSpace.textContent = wordList[index].number;
 
     card.addEventListener('touchend', (e) => {
         e.preventDefault();
@@ -78,6 +80,7 @@ const enToJa = (wordList, settings) => {
                 showWeak.classList.remove('weak-true');
                 showWeak.classList.add('weak-false');
             }
+            numberSpace.textContent = wordList[index].number;
         } else {
             mean = true;
             meanSpace.textContent = wordList[index].mean;
@@ -99,13 +102,14 @@ const enToJa = (wordList, settings) => {
     })
 }
 
-const jaToEn = (wordList, settings) => {
+const jaToEn = (wordList) => {
     let index = 0;
     let word = false;
 
     const card = document.getElementById('card');
     const wordSpace = document.getElementById('wordText');
     const meanSpace = document.getElementById('meanText');
+    const numberSpace = document.getElementById('numberText');
     const showWeak = document.getElementById('isWeak');
     const showNumber = document.getElementById('showNumber');
     meanSpace.textContent = wordList[0].mean;
@@ -117,6 +121,7 @@ const jaToEn = (wordList, settings) => {
         showWeak.classList.add('weak-false');
     }
     showNumber.textContent = `${index + 1} / ${wordList.length}`;
+    numberSpace.textContent = wordList[index].number;
 
     card.addEventListener('touchend', (e) => {
         e.preventDefault();
@@ -138,6 +143,7 @@ const jaToEn = (wordList, settings) => {
                 showWeak.classList.remove('weak-true');
                 showWeak.classList.add('weak-false');
             }
+            numberSpace.textContent = wordList[index].number;
         } else {
             word = true;
             wordSpace.textContent = wordList[index].word;

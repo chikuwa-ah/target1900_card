@@ -164,6 +164,7 @@ select#range-select:focus {
 }
 
 .card {
+    position: relative;
     background-color: #75cad5;
     color: white;
     width: 80vw;
@@ -184,11 +185,19 @@ select#range-select:focus {
     margin-top: 3rem;
 }
 
+#numberText {
+    font-size: 0.55em;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translate(-50%, 0.5rem);
+}
+
 #wordText {
     font-size: 1.1em;
 }
 
-.card-text p {
+#meanText {
     margin-top: 1em;
     font-size: 0.7em;
 }

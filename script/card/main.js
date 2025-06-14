@@ -104,8 +104,10 @@ const enToJa = (wordList) => {
             showWeak.classList.remove("weak-false");
             showWeak.classList.add("weak-true");
             localStorage.setItem(`${wordList[index].number}`, true);
+            localStorage.setItem(`type-${wordList[index].number}`, true);
         } else {
             localStorage.setItem(`${wordList[index].number}`, false);
+            localStorage.setItem(`type-${wordList[index].number}`, false);
             showWeak.classList.remove("weak-true");
             showWeak.classList.add("weak-false");
         }
@@ -172,8 +174,10 @@ const jaToEn = (wordList) => {
             showWeak.classList.remove("weak-false");
             showWeak.classList.add("weak-true");
             localStorage.setItem(`${wordList[index].number}`, true);
+            localStorage.setItem(`type-${wordList[index].number}`, true);
         } else {
             localStorage.setItem(`${wordList[index].number}`, false);
+            localStorage.setItem(`type-${wordList[index].number}`, false);
             showWeak.classList.remove("weak-true");
             showWeak.classList.add("weak-false");
         }

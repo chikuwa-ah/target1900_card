@@ -13,6 +13,12 @@ const createTable = (data) => {
         if (JSON.parse(localStorage.getItem(`${word.number}`))) {
             row.style.backgroundColor = '#b3f5ff';
         }
+        const selector = document.getElementById('section-select');
+        if (selector.value === '2') {
+            if (JSON.parse(localStorage.getItem(`type-${word.number}`))) {
+                row.style.backgroundColor = '#cbffb3';
+            }
+        }
 
         const numberCell = document.createElement('div');
         numberCell.className = 'cell number';
@@ -28,10 +34,11 @@ const createTable = (data) => {
     }
 }
 
-const loadWords = () => {
+const loadWords = (selection) => {
     const weakWords = [];
     for (let index = 1; index < 1901; index++) {
-        if (JSON.parse(localStorage.getItem(`${index}`))) {
+        const key = selection === "1" ? `${index}` : `type-${index}`;
+        if (JSON.parse(localStorage.getItem(key))) {
             weakWords.push(WORDS[index]);
         }
     }
@@ -87,12 +94,27 @@ const touchEventListener = () => {
 
         if (target.classList[1] === 'number' && target.textContent !== 'No.') {
             const number = Number(target.textContent);
-            if (style.backgroundColor === 'rgb(255, 255, 255)') {
-                parent.style.backgroundColor = '#b3f5ff';
-                localStorage.setItem(`${number}`, true);
+            const selector = document.getElementById('section-select');
+            if (selector.value === '1') {
+                if (style.backgroundColor === 'rgb(255, 255, 255)') {
+                    parent.style.backgroundColor = '#b3f5ff';
+                    localStorage.setItem(`${number}`, true);
+                } else {
+                    parent.style.backgroundColor = '#fff';
+                    localStorage.setItem(`${number}`, false);
+                }
             } else {
-                parent.style.backgroundColor = '#fff';
-                localStorage.setItem(`${number}`, false);
+                if (style.backgroundColor === 'rgb(255, 255, 255)' || style.backgroundColor === 'rgb(179, 245, 255)') {
+                    parent.style.backgroundColor = '#cbffb3';
+                    localStorage.setItem(`type-${number}`, true);
+                } else {
+                    localStorage.setItem(`type-${number}`, false);
+                    if (JSON.parse(localStorage.getItem(`${number}`))) {
+                        parent.style.backgroundColor = '#b3f5ff';
+                    } else {
+                        parent.style.backgroundColor = '#fff';
+                    }
+                }
             }
         }
     });
@@ -106,6 +128,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         console.log('new');
     }
-    loadWords();
+
+    const selector = document.getElementById('section-select');
+    selector.addEventListener('change', () => {
+        if (selector.value !== '0') {
+            loadWords(selector.value);
+        }
+    })
     touchEventListener();
 })

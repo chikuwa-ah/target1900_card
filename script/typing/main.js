@@ -193,19 +193,10 @@ window.addEventListener("DOMContentLoaded", () => {
         location.reload();
     });
 
-    for (let i = 1; i < 1901; i++) {
-        if (JSON.parse(localStorage.getItem(`${i}`))) {
+    if (localStorage.getItem(`type-1`) === null) {
+        for (let i = 1; i < 1901; i++) {
             const current = JSON.parse(localStorage.getItem(`${i}`));
             localStorage.setItem(`type-${i}`, current);
-        } else {
-            if (localStorage.getItem(`type-${i}`) === null) {
-                if (localStorage.getItem(`${i}`) === null) {
-                    localStorage.setItem(`type-${i}`, false);
-                } else {
-                    const current = JSON.parse(localStorage.getItem(`${i}`));
-                    localStorage.setItem(`type-${i}`, current);
-                }
-            }
         }
     }
 });

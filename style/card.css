@@ -194,8 +194,8 @@ select#range-select:focus {
 }
 
 #wordText {
-    font-size: 1.1em;
-    margin-bottom: 1em;
+    font-size: 1em;
+    margin-bottom: 0.4em;
 }
 
 .card-mean {

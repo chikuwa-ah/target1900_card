@@ -188,17 +188,17 @@ select#range-select:focus {
 #numberText {
     font-size: 0.55em;
     position: absolute;
-    top: 0.5rem;
+    bottom: 1rem;
     left: 50%;
-    transform: translate(-50%, 0.5rem);
+    transform: translate(-50%, 1rem);
 }
 
 #wordText {
     font-size: 1.1em;
+    margin-bottom: 1em;
 }
 
-#meanText {
-    margin-top: 1em;
+.card-mean {
     font-size: 0.7em;
 }
 

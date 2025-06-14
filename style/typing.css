@@ -1,0 +1,135 @@
+.keyboard {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #75cad5;
+}
+
+.key-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.key-row button {
+    margin: 4px 2px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.key {
+    font-size: 1rem;
+    width: 2.15em;
+    height: 2.8em;
+}
+
+.key-active {
+    transform: scale(0.9);
+    background-color: #85cdd6;
+}
+
+.delete {
+    font-size: 1rem;
+    width: 3em;
+    height: 2.8em;
+    position: absolute;
+    top: 0;
+    right: 2px;
+}
+.enter {
+    width: 60%;
+    height: 2.3em;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.typing-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: "Noto Sans JP", sans-serif;
+    position: relative;
+}
+
+.cursor.visible {
+    width: 0.2em;
+    height: 1em;
+    border-right: #333 solid 2px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.typing {
+    background-color: #75cad5;
+    color: white;
+    width: 80vw;
+    height: 50vh;
+    max-width: 320px;
+    max-height: 320px;
+    box-shadow: 0 8px 15px rgba(172, 245, 255, 0.4);
+    font-size: 2.2rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 16px;
+    user-select: none;
+    transition: transform 0.5s, background-color 0.5s, color 0.5s;
+    padding: 1rem;
+    margin-top: 6rem;
+}
+
+.mean-space {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    font-size: 0.8em;
+}
+
+.typing-space {
+    position: relative;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    background-color: #fff;
+    color: #333;
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    border: #ffffff 1px solid;
+}
+
+.show-typing-weak {
+    padding: 1rem 2rem;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 80%;
+    max-width: 300px;
+    border: #75cad5 solid 1px;
+}

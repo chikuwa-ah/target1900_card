@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <title>単語タイピング | ターゲット1900</title>
+        <link rel="icon" href="./icons/favicon.ico" id="favicon" />
+        <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon-180x180.png" />
+        <link rel="stylesheet" href="./style/style.css" />
+        <link rel="stylesheet" href="./style/card.css" />
+        <link rel="stylesheet" href="./style/typing.css" />
+        <script src="./script/words.js"></script>
+        <script src="./script/typing/main.js"></script>
+    </head>
+
+    <body>
+        <section class="origin">
+            <section class="head">
+                <header>
+                    <a href="./index.html">
+                        <h1>Target1900</h1>
+                    </a>
+                </header>
+            </section>
+
+            <!-- 設定画面 -->
+            <div class="setup-container" id="setup">
+                <h2>出題設定</h2>
+
+                <label style="flex-direction: row; justify-content: space-between; align-items: center">
+                    <div class="group-title">出題範囲:</div>
+                    <div style="display: flex; gap: 0.5rem; align-items: center">
+                        <input type="number" id="startIndex" value="1" min="1" />
+                        〜
+                        <input type="number" id="endIndex" value="1900" min="1" />
+                    </div>
+                </label>
+
+                <div class="select-container">
+                    <select id="range-select">
+                        <option value="0">---------</option>
+                        <option value="1">Section 1</option>
+                        <option value="2">Section 2</option>
+                        <option value="3">Section 3</option>
+                        <option value="4">Section 4</option>
+                        <option value="5">Section 5</option>
+                        <option value="6">Section 6</option>
+                        <option value="7">Section 7</option>
+                        <option value="8">Section 8</option>
+                        <option value="9">Section 9</option>
+                        <option value="10">Section 10</option>
+                        <option value="11">Section 11</option>
+                        <option value="12">Section 12</option>
+                        <option value="13">Section 13</option>
+                        <option value="14">Section 14</option>
+                        <option value="15">Section 15</option>
+                        <option value="16">Section 16</option>
+                        <option value="17">Section 17</option>
+                        <option value="18">Section 18</option>
+                        <option value="19">Section 19</option>
+                    </select>
+                </div>
+
+                <div class="group-container">
+                    <div class="group-title">出題順</div>
+                    <div class="button-group" data-group="order">
+                        <div class="button-item active" data-value="0">順番</div>
+                        <div class="button-item" data-value="1">ランダム</div>
+                    </div>
+                </div>
+
+                <div class="group-container">
+                    <div class="group-title">苦手単語モード</div>
+                    <div class="button-group" data-group="weakOnly">
+                        <div class="button-item active" data-value="0">OFF</div>
+                        <div class="button-item" data-value="1">ON</div>
+                    </div>
+                </div>
+
+                <button id="startBtn">スタート</button>
+            </div>
+        </section>
+
+        <div class="keyboard">
+            <div class="key-row">
+                <button class="key" data-value="q">Q</button>
+                <button class="key" data-value="w">W</button>
+                <button class="key" data-value="e">E</button>
+                <button class="key" data-value="r">R</button>
+                <button class="key" data-value="t">T</button>
+                <button class="key" data-value="y">Y</button>
+                <button class="key" data-value="u">U</button>
+                <button class="key" data-value="i">I</button>
+                <button class="key" data-value="o">O</button>
+                <button class="key" data-value="p">P</button>
+            </div>
+            <div class="key-row">
+                <button class="key" data-value="a">A</button>
+                <button class="key" data-value="s">S</button>
+                <button class="key" data-value="d">D</button>
+                <button class="key" data-value="f">F</button>
+                <button class="key" data-value="g">G</button>
+                <button class="key" data-value="h">H</button>
+                <button class="key" data-value="j">J</button>
+                <button class="key" data-value="k">K</button>
+                <button class="key" data-value="l">L</button>
+            </div>
+            <div class="key-row">
+                <button class="key" data-value="z">Z</button>
+                <button class="key" data-value="x">X</button>
+                <button class="key" data-value="c">C</button>
+                <button class="key" data-value="v">V</button>
+                <button class="key" data-value="b">B</button>
+                <button class="key" data-value="n">N</button>
+                <button class="key" data-value="m">M</button>
+                <button class="delete" data-value="delete">⌫</button>
+            </div>
+            <div class="key-row">
+                <button class="enter" data-value="enter">決定</button>
+            </div>
+        </div>
+
+        <div class="typing-container" id="typingSection">
+            <button class="back-button" id="backBtn">← 設定に戻る</button>
+            <div class="typing">
+                <div id="meanText" class="mean-space"></div>
+                <div class="typing-space">
+                    <div id="typingSpace" class="type-text"></div>
+                    <div class="cursor visible"></div>
+                </div>
+            </div>
+            <div class="show-number" id="showNumber"></div>
+
+            <div class="show-typing-weak weak-false" id="isWeak">苦手</div>
+        </div>
+    </body>
+</html>

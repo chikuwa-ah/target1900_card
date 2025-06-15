@@ -23,7 +23,7 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+    transition: transform 0.1s ease-in-out;
     font-size: 1rem;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .typing-container {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -146,4 +146,36 @@
     width: 80%;
     max-width: 300px;
     border: #75cad5 solid 1px;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select-destiny {
+    display: none;
+    justify-content: center;
+    width: 90%;
+    margin-top: 2em;
+}
+
+.destiny-button {
+    margin: 0.2rem;
+    padding: 1rem 0;
+    background-color: #75cad5;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.destiny-button:hover {
+    background-color: #acf5ff;
+    transform: translateY(-3px);
 }

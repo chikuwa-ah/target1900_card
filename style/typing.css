@@ -94,7 +94,7 @@
     background-color: #75cad5;
     color: white;
     width: 80vw;
-    height: 35vh;
+    height: 30vh;
     max-width: 320px;
     max-height: 320px;
     box-shadow: 0 8px 15px rgba(172, 245, 255, 0.4);
@@ -136,8 +136,9 @@
 }
 
 .show-typing-weak {
-    padding: 1rem 2rem;
+    padding: 0.6rem 2rem;
     text-align: center;
+    margin-top: 1em;
     border: none;
     border-radius: 12px;
     font-size: 1.3rem;
@@ -148,8 +149,16 @@
     border: #75cad5 solid 1px;
 }
 
+.show-number1 {
+    margin-top: 1.6rem;
+    color: #75cad5;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
 .display {
     display: none;
+    margin-bottom: 5em;
 }
 
 .select-destiny {

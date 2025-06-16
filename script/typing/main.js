@@ -84,7 +84,7 @@ const createTypingDisplay = () => {
                     <div class="cursor visible"></div>
                 </div>
             </div>
-            <div class="show-number" id="showNumber"></div>
+            <div class="show-number1" id="showNumber"></div>
 
             <div class="show-typing-weak weak-false" id="isWeak">苦手</div>
         </div>
@@ -101,6 +101,8 @@ const question = (wordList) => {
     const meanSpace = document.getElementById("meanText");
     const typeSpace = document.getElementById("typingSpace");
     const showWeak = document.getElementById("isWeak");
+    const showNumber = document.getElementById('showNumber');
+    showNumber.textContent = `${1} / ${wordList.length}`;
     meanSpace.textContent = wordList[0].mean;
     if (JSON.parse(localStorage.getItem(`type-${wordList[0].number}`))) {
         showWeak.classList.remove("weak-false");
@@ -138,6 +140,7 @@ const question = (wordList) => {
                 typingEnd(wordList, missList);
                 return;
             }
+            showNumber.textContent = `${index + 1} / ${wordList.length}`;
             next = false;
             meanSpace.textContent = wordList[index].mean;
             typeSpace.textContent = "";

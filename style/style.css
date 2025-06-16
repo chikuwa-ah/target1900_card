@@ -109,13 +109,13 @@ a.button-link:active {
 .cell.number {
     flex: 2;
     border-right: 1px solid #ccc;
+    font-weight: 600;
 }
 
 .cell.word {
     flex: 5;
     font-size: 1.2em;
 }
-
 
 .pop-overlay {
     position: fixed;

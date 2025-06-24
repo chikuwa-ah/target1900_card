@@ -224,7 +224,7 @@ const typingEnd = (wordList, missList) => {
                 question(wordList);
                 return;
             } else {
-                if (missList.length > 1) {
+                if (missList.length > 0) {
                     question(missList);
                     return;
                 } else {
